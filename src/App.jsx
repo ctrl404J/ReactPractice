@@ -4,9 +4,9 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  let [postTitle, changeTitle] = useState(['cJava에 관해서', 'bpring에 관해서', 'aPython에 관해서']);
+  let [postTitle, changeTitle] = useState(['Java에 관해서', 'pring에 관해서', 'Python에 관해서']);
   postTitle.sort();
-  let [goodCount, changeGood] = useState([1,2,3]);
+  let [goodCount, changeGood] = useState([0,0,0]);
   let [modalState, setModal] = useState(false);
 
   return (
@@ -14,32 +14,23 @@ function App() {
       <div className='black-nav'>
         <h4>ReactBlog</h4>
       </div>
-      <div className='list'>
-        <h4>{postTitle[0]} <span onClick={()=>{
-            let copy = [...goodCount];
-            copy[0] = copy[0]+1;
-            changeGood(copy);
-          }}>👍</span> {goodCount[0]} </h4>
-        <p>9월18일 발행</p>
-      </div>
-      <div className='list'>
-        <h4 onClick={()=>{
-          setModal(!modalState);
-        }}>{postTitle[1]} <span>👍</span> {goodCount[1]} </h4>
-        <p>9월18일 발행</p>
-      </div>
-      <div className='list'>
-        <h4>{postTitle[2]} <span>👍</span> {goodCount[2]} </h4>
-        <p>9월18일 발행</p>
-      </div>
+      
       {
-        postTitle.map(function(param){
+        postTitle.map(function(param, i){ //첫째 파람은 배열의 값을 하나씩 꺼내와주고, 두번째 배열은 인덱스를 1씩 증가한다.
           return(
             <div>
-              <div>안녕</div>
-              <div>바이</div>
+              <div className='list'>
+                <h4 onClick={()=>{
+                  setModal(!modalState);
+                }}>{postTitle[i]} <span onClick={()=>{
+                  let copy = [...goodCount];
+                  copy[i] = copy[i]+1;
+                  changeGood(copy);
+                }}>👍</span> {goodCount[i]} </h4>
+                <p>9월18일 발행</p>
+              </div>
             </div>
-          );
+          )
         })
       }
       {
