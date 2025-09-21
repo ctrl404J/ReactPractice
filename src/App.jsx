@@ -32,7 +32,16 @@ function App() {
         <h4>{postTitle[2]} <span>👍</span> {goodCount[2]} </h4>
         <p>9월18일 발행</p>
       </div>
-      
+      {
+        postTitle.map(function(param){
+          return(
+            <div>
+              <div>안녕</div>
+              <div>바이</div>
+            </div>
+          );
+        })
+      }
       {
         modalState == true ? <Modal/> : null
       }
