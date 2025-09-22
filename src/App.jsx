@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  let [postTitle, changeTitle] = useState(['Java에 관해서', 'pring에 관해서', 'Python에 관해서']);
+  let [postTitle, changeTitle] = useState(['Java에 관해서', 'Spring에 관해서', 'Python에 관해서']);
   postTitle.sort();
   let [goodCount, changeGood] = useState([0,0,0]);
   let [modalState, setModal] = useState(false);
@@ -18,8 +18,7 @@ function App() {
       {
         postTitle.map(function(param, i){ //첫째 파람은 배열의 값을 하나씩 꺼내와주고, 두번째 배열은 인덱스를 1씩 증가한다.
           return(
-            <div>
-              <div className='list'>
+            <div className='list' key={i}>
                 <h4 onClick={()=>{
                   setModal(!modalState);
                 }}>{postTitle[i]} <span onClick={()=>{
@@ -28,7 +27,6 @@ function App() {
                   changeGood(copy);
                 }}>👍</span> {goodCount[i]} </h4>
                 <p>9월18일 발행</p>
-              </div>
             </div>
           )
         })
