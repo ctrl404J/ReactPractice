@@ -29,7 +29,15 @@ function App() {
                   let copy = [...goodCount];
                   copy[i] = copy[i]+1;
                   changeGood(copy);
-                }}>👍</span> {goodCount[i]} </h4>
+                }}>👍</span> {goodCount[i]}  <button onClick={(e)=>{
+                  e.stopPropagation();
+                  let copy1 = [...postTitle];
+                  copy1.splice(i, 1);
+                  changeTitle(copy1);
+                  let copy2 = {...goodCount};
+                  copy2.splice(i, 1);
+                  changeGood(copy2);
+                }}>글삭제</button></h4>
                 <p>9월18일 발행</p>
             </div>
           )
