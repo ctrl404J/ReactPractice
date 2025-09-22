@@ -23,7 +23,8 @@ function App() {
                 <h4 onClick={()=>{
                   setModal(!modalState);
                   setClickIndex(i);
-                }}>{postTitle[i]} <span onClick={()=>{
+                }}>{postTitle[i]} <span onClick={(e)=>{
+                  e.stopPropagation();
                   let copy = [...goodCount];
                   copy[i] = copy[i]+1;
                   changeGood(copy);
