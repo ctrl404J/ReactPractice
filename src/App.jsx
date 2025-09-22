@@ -9,6 +9,7 @@ function App() {
   let [goodCount, changeGood] = useState(Array(postTitle.length).fill(0));
   let [modalState, setModal] = useState(false);
   let [clickIndex, setClickIndex] = useState(0);
+  let [inputText, setInputValue] = useState('');
 
   return (
     <div className='App'>
@@ -34,6 +35,18 @@ function App() {
           )
         })
       }
+
+      <input type='text' onChange={(e)=>{ 
+        setInputValue(e.target.value);
+      }}></input> <button onClick={()=>{
+        let copy = [...postTitle];
+        copy.push(inputText);
+        changeTitle(copy);
+        let copy2 = [...goodCount];
+        copy2.push(0);
+        changeGood(copy2);
+      }}>글쓰기</button>
+      
       {
         modalState == true ? <Modal postTitle={postTitle} changeTitle={changeTitle} clickIndex={clickIndex}/> : null
       }
